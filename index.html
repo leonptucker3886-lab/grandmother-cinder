@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#0a0507">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>Grandmother Cinder — Chapter I: The Kindling</title>
+<title>Grandmother Cinder — Chapters I-II</title>
 <style>
 :root{--ember:#ff7a2f;--gold:#e8c27a;--ink:#f3e9dc;--dim:#a8968a;--panel:rgba(20,10,12,.82);--blood:#c2263a}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;touch-action:none}
@@ -67,6 +67,7 @@ h2{color:var(--gold);text-align:center;margin:4px 0 12px;font-size:24px;text-sha
   <div class="sub">Veyl · Year 0 of the Ember · Chapter I: The Kindling</div>
   <div class="panel">
    <button class="btn gold" id="mPlay">Begin the Kindling</button>
+   <button class="btn" id="mCh2">Chapter II: The Saint of Oss</button>
    <button class="btn" id="mShop">Ash-Shrine (Upgrades)</button>
    <button class="btn" id="mLore">Folk Tales</button>
    <div class="sub" id="mStats" style="margin:10px 0 0"></div>
@@ -149,7 +150,19 @@ const STAGES=[
   waves:[['wisp',8,'walker',6],['nameless',3,'wisp',8],['nameless',5,'oathbound',4,'hound',6]]},
  {n:'The Heart-Crater',t:'Where the god struck the earth. Something wears its ash.',col:['#2a0806','#0a0202'],gr:'#3a100a',x:.86,y:.14,boss:1,
   card:['The Heart-Crater','The crater glows like a forge left open. At its center kneels <b>the Hollow King</b>: a corpse the size of a barrow, stitched from a hundred dead, wearing the god\'s ash like a mantle.\n\nIt turns. Its voice is every voice in the barrow.\n\n<i>"Little ember. I have been warming the throne for you."</i>'],
-  waves:[['boss',1]]}
+  waves:[['boss',1]]},
+ {n:'The Salt Marches',t:'Oss country. White ground, red water.',col:['#2a2a2c','#0c0c10'],gr:'#3a3634',x:.16,y:.8,
+  card:['The Salt Marches','The steppe turns white. Salt. The river-kingdom of Oss salted its own fields so the ash could not take root.\n\n<b>Tarqun:</b> "My people have a saint now. A woman who does not die. They say she drinks the dead to keep the ash out of them."\n\n<i>Then the salt stands up, wearing the skins of men.</i>'],
+  waves:[['skin',6,'walker',6],['skin',8,'hound',6],['salt',4,'skin',6]]},
+ {n:'Korr\'s Snare',t:'A hunter\'s camp hung with skins that were not animals.',col:['#20160e','#080604'],gr:'#2e2014',x:.4,y:.56,
+  card:['Korr\'s Snare','A camp of bone frames and stretched hides. A huge man is tied to a stake, his own skinning knives in a ring around him.\n\n<b>Korr:</b> "The Saint\'s pilgrims left me for the skin-walkers. Cut me loose, coal-girl, and my axes are yours."\n\n<b>Korr the Flayer joins.</b> His thrown axes fly in pairs. His Howl throws back everything near him and makes it bleed. Swap to him with the swap button.\n\n<i>He wears his dead wife\'s face-paint. He does not say how she died.</i>'],
+  waves:[['skin',8,'salt',4],['witch',4,'skin',8],['witch',5,'salt',5,'hound',6]]},
+ {n:'The Pilgrim Road',t:'Ten thousand pilgrims walked here. Few walked back.',col:['#1c1418','#08050a'],gr:'#2a1e22',x:.64,y:.36,
+  card:['The Pilgrim Road','The road to Oss is lined with pilgrims kneeling in the salt. None of them are breathing. All of them are smiling.\n\n<b>Wenna:</b> "She did not drink the dead, child. She drank the living, and called it a blessing."\n\nAt the end of the road waits the Saint\'s Warden: a knight in salt-crusted armor carrying a reliquary that weeps.'],
+  waves:[['witch',6,'skin',8],['warden',1,'salt',6],['warden',2,'witch',6,'skin',6]]},
+ {n:'The Salt Cathedral',t:'Where the Saint of Oss drinks her flock.',col:['#2a2420','#0c0806'],gr:'#3e3428',x:.86,y:.14,boss:1,bn:'The Saint of Oss',
+  card:['The Salt Cathedral','A cathedral carved from one salt hill. Thousands kneel inside, white to the knees, white to the waist, white to the eyes.\n\nOn the altar sits <b>the Saint of Oss</b>, beautiful and terribly thin. A hundred feeding tubes of red glass run from her to her congregation.\n\n<i>"Give me the coal, little ember, and no one on the steppe will ever die again. They will only kneel."</i>'],
+  waves:[['saint',1]]}
 ];
 const END=['The Coal','The Hollow King comes apart like a burned house in rain. In its chest, still beating, sits a coal the size of a child\'s fist: <b>the last of the Ember\'s heart.</b>\n\nTarqun\'s oath ends here. He does not lower his spear. Wenna weeps without sound.\n\n<b>Wenna:</b> "If no one carries it, it goes out. If it goes out, the dead never lie down again."\n\nYou take the coal. It is warm as a mother\'s hand.\n\n<i>You swallow it.</i>\n\nThe pain is a sun. When you open your eyes, your hair is white as ash and the steppe is kneeling.\n\nFar off, in a country that does not exist yet, iron hums. Wenna\'s dead whisper a prophecy she will not repeat aloud — about <b>nine bells</b>, and a city that will one day try to ring your fire back out of the earth.\n\n<b>"Grandmother," they whisper. "Grandmother Cinder."</b>\n\n— END OF CHAPTER I —'];
 const LORE='<b>The Ninth Bell</b> (told on the steppe to frighten children)\n\nOne day men will forget the Ember and build eight great bells to drink the warmth from the ground. The eighth will ring, and the ninth will be cast — and on that day Grandmother Cinder will wake in the bell\'s throat and ask who stole her fire.\n\n<b>The Name-Eater</b>\nNever say your true name near a barrow. The nameless dead collect them, and a stolen name can be bargained back only in blood.\n\n<b>Oaths of Oss</b>\nThe river-folk swear on an opened wrist. An oath outlives the swearer. That is why Oss has so many drowned soldiers still standing guard.\n\n<b>Ash-Priests</b>\nThey cut away a finger for each conversation with the dead. Old priests have none left, and speak to the dead with their eyes.';
@@ -167,8 +180,14 @@ const EN={
  oathbound:{hp:110,spd:42,dmg:17,r:20,col:'#2a5a7a',ash:6,armor:.35},
  wisp:{hp:26,spd:60,dmg:8,r:12,col:'#9a7ae8',ash:3,ranged:1},
  nameless:{hp:70,spd:70,dmg:15,r:17,col:'#3a2a3a',ash:6,blink:1},
+ skin:{hp:38,spd:120,dmg:10,r:14,col:'#a08a70',ash:3,blink:1},
+ salt:{hp:120,spd:40,dmg:18,r:21,col:'#d8d4cc',ash:7,armor:.4},
+ witch:{hp:40,spd:55,dmg:12,r:14,col:'#c03050',ash:4,ranged:1},
+ warden:{hp:700,spd:50,dmg:22,r:30,col:'#e0dccc',ash:40,armor:.3},
+ saint:{hp:3600,spd:44,dmg:28,r:44,col:'#e8d8d0',ash:180,boss:1},
  boss:{hp:2600,spd:40,dmg:24,r:46,col:'#5a1a10',ash:120,boss:1}
 };
+const KORR={id:'ko',n:'Korr',col:'#a0522d',glow:'#e0a070',hp:150,spd:155,atkCd:.42,skCd:9,skn:'Howl',ico:'\u{1FA93}'};
 const AW=1100,AH=1100;
 let G=null,state='menu',last=0,shake=0,flash=0,slowmo=0;
 const P=[],FX=[],TXT=[],PR=[],ENS=[],ASHP=[];
@@ -239,6 +258,7 @@ function attack(){
  let ax=G.fx,ay=G.fy;if(t){const l=Math.hypot(t.x-G.x,t.y-G.y)||1;ax=(t.x-G.x)/l;ay=(t.y-G.y)/l;G.fx=ax;G.fy=ay;}
  if(h.d.id==='ys'){PR.push({x:G.x,y:G.y,vx:ax*560,vy:ay*560,d:15,r:7,l:.9,c:'#ff8a3a',own:1,tr:1});SFX.bolt();}
  else if(h.d.id==='we'){PR.push({x:G.x,y:G.y,vx:ax*380,vy:ay*380,d:10,r:9,l:1.1,c:'#c8b0ff',own:1,tr:1,pierce:2});SFX.bolt();}
+ else if(h.d.id==='ko'){[-.18,.18].forEach(o=>{const a=Math.atan2(ay,ax)+o;PR.push({x:G.x,y:G.y,vx:Math.cos(a)*460,vy:Math.sin(a)*460,d:13,r:8,l:.75,c:'#e0a070',own:1,tr:1,pierce:1})});SFX.spear();}
  else{ // spear thrust cone
   SFX.spear();const a0=Math.atan2(ay,ax);FX.push({k:'arc',x:G.x,y:G.y,a:a0,l:.18,ml:.18,c:'#9ee0ff',r:78});
   for(const e of ENS){const dx=e.x-G.x,dy=e.y-G.y,dd=Math.hypot(dx,dy);if(dd<78+e.r){let da=Math.abs(((Math.atan2(dy,dx)-a0+9.42)%6.283)-3.14);if(da<.9)hitEnemy(e,24,22,G.x,G.y);}}
@@ -248,6 +268,8 @@ function useSkill(){
  if(state!=='play')return;const h=hero();if(h.sk>0)return;h.sk=h.d.skCd*(1-.08*S.up.swift);SFX.skill();buzz(25);
  if(h.d.id==='ys'){FX.push({k:'ring',x:G.x,y:G.y,l:.5,ml:.5,c:'#ff7a2f',r:170});shake=Math.max(shake,12);part(G.x,G.y,60,'#ffb060',320,.7);
   for(const e of ENS)if(Math.hypot(e.x-G.x,e.y-G.y)<170+e.r)hitEnemy(e,38,60,G.x,G.y);}
+ else if(h.d.id==='ko'){FX.push({k:'ring',x:G.x,y:G.y,l:.5,ml:.5,c:'#e0a070',r:220});shake=Math.max(shake,14);part(G.x,G.y,50,'#c03a20',300,.7);
+  for(const e of ENS)if(Math.hypot(e.x-G.x,e.y-G.y)<220+e.r)hitEnemy(e,30,160,G.x,G.y);}
  else if(h.d.id==='ta'){G.block=2.6;FX.push({k:'ring',x:G.x,y:G.y,l:.4,ml:.4,c:'#9ee0ff',r:90});
   for(const e of ENS)if(Math.hypot(e.x-G.x,e.y-G.y)<95+e.r)hitEnemy(e,14,90,G.x,G.y);}
  else{G.spirit={x:G.x,y:G.y,t:9,atk:0};SFX.heal();part(G.x,G.y,40,'#e0d0ff',200,.9);
@@ -255,7 +277,7 @@ function useSkill(){
 }
 function swap(){
  if(state!=='play'||G.swapCd>0)return;
- let n=G.act;for(let i=1;i<=3;i++){const k=(G.act+i)%3;if(!G.heroes[k].dead){n=k;break;}}
+ let n=G.act;for(let i=1;i<=G.heroes.length;i++){const k=(G.act+i)%G.heroes.length;if(!G.heroes[k].dead){n=k;break;}}
  if(n===G.act)return;
  G.act=n;G.swapCd=3*(1-.12*S.up.oath);G.swapBonus=2;G.inv=.5;G.block=0;SFX.swap();buzz(15);
  FX.push({k:'ring',x:G.x,y:G.y,l:.35,ml:.35,c:hero().d.glow,r:80});part(G.x,G.y,30,hero().d.glow,220,.6);
@@ -279,8 +301,8 @@ function spawn(type,n){
 function startWave(){
  const w=STAGES[G.stage].waves[G.wave];
  for(let i=0;i<w.length;i+=2)spawn(w[i],w[i+1]);
- $('info').textContent=STAGES[G.stage].n+' — '+(STAGES[G.stage].boss?'The Hollow King':'Wave '+(G.wave+1)+'/'+STAGES[G.stage].waves.length);
- if(STAGES[G.stage].boss){SFX.boss();shake=20;toast('THE HOLLOW KING');}else toast('Wave '+(G.wave+1));
+ $('info').textContent=STAGES[G.stage].n+' — '+(STAGES[G.stage].boss?(STAGES[G.stage].bn||'The Hollow King'):'Wave '+(G.wave+1)+'/'+STAGES[G.stage].waves.length);
+ if(STAGES[G.stage].boss){SFX.boss();shake=20;toast((STAGES[G.stage].bn||'The Hollow King').toUpperCase());}else toast('Wave '+(G.wave+1));
 }
 function enterStage(){
  ENS.length=0;PR.length=0;ASHP.length=0;FX.length=0;G.x=AW/2;G.y=AH*.7;G.wave=0;G.boss=null;G.spirit=null;
@@ -368,7 +390,9 @@ function stageClear(){
  state='between';SFX.win();buzz([30,30,30]);
  const bonus=Math.round(40*(G.stage+1)*(1+G.ng*.5));G.score+=bonus;
  G.stage++;
- if(G.stage>=STAGES.length){victory();return;}
+ if(G.stage>=STAGES.length){victory2();return;}
+ if(G.stage===4){state='over';setTimeout(()=>cards([END,CH2CARD],showMap),1100);return;}
+ if(G.stage===5&&!G.heroes.some(q=>q.d.id==='ko'))addKorr();
  toast('Stage cleared  +'+bonus);setTimeout(showMap,1100);
 }
 function showMap(){show('map');state='map';const s=STAGES[G.stage];$('mapT').innerHTML='<b style="color:var(--gold)">'+s.n+'</b><br>'+s.t;requestAnimationFrame(drawMap);}
@@ -378,17 +402,24 @@ function drawMap(){const c=$('mapc'),r=c.getBoundingClientRect(),d=Math.min(devi
  m.strokeStyle='#2a6a8a';m.lineWidth=6;m.beginPath();m.moveTo(0,h*.45);m.bezierCurveTo(w*.3,h*.6,w*.5,h*.4,w,h*.62);m.stroke();m.fillStyle='#4aa8c8';m.font='italic 12px Georgia';m.fillText('River Oss',w*.62,h*.6);
  for(let i=0;i<40;i++){m.fillStyle='rgba(200,180,160,'+(Math.random()*.15)+')';m.fillRect(Math.random()*w,Math.random()*h,2,2);}
  m.setLineDash([5,6]);m.strokeStyle='#e8c27a88';m.lineWidth=2;m.beginPath();STAGES.forEach((s,i)=>i?m.lineTo(s.x*w,s.y*h):m.moveTo(s.x*w,s.y*h));m.stroke();m.setLineDash([]);
- STAGES.forEach((s,i)=>{const x=s.x*w,y=s.y*h,cur=i===G.stage,done=i<G.stage;m.beginPath();m.arc(x,y,cur?13:9,0,7);m.fillStyle=done?'#6a5a4a':cur?'#ff7a2f':'#3a2420';m.shadowColor='#ff7a2f';m.shadowBlur=cur?20:0;m.fill();m.shadowBlur=0;m.strokeStyle='#e8c27a';m.stroke();
+ STAGES.forEach((s,i)=>{if((i>=4)!==(G.stage>=4))return;const x=s.x*w,y=s.y*h,cur=i===G.stage,done=i<G.stage;m.beginPath();m.arc(x,y,cur?13:9,0,7);m.fillStyle=done?'#6a5a4a':cur?'#ff7a2f':'#3a2420';m.shadowColor='#ff7a2f';m.shadowBlur=cur?20:0;m.fill();m.shadowBlur=0;m.strokeStyle='#e8c27a';m.stroke();
   m.fillStyle=cur?'#ffe08a':'#c8b8a8';m.font=(cur?'bold ':'')+'13px Georgia';m.textAlign=s.x>.7?'right':'left';m.fillText((done?'✓ ':'')+s.n,x+(s.x>.7?-16:16),y+4);});m.textAlign='left';}
 function finishRun(win){const ashGain=G.ashRun;S.ash+=ashGain;const sc=G.score+G.kills*5;if(sc>S.best)S.best=sc;if(win){S.wins++;S.ng++;}save();return {ashGain,sc};}
 function gameOver(){if(state==='over')return;state='over';shake=20;SFX.die();buzz([100,50,200]);
  setTimeout(()=>{const r=finishRun(false);$('oT').textContent='The Ash Takes You';
-  $('oX').innerHTML='Your bodies cool on the steppe. By dawn, the ash has found them.\n\n<i>Three more walkers join the circle.</i>\n\nReached: <b>'+STAGES[Math.min(G.stage,3)].n+'</b>\nKills: <b>'+G.kills+'</b>\nScore: <b>'+r.sc+'</b>  ·  Best: <b>'+S.best+'</b>\nAsh gathered: <span class="ash">+'+r.ashGain+'</span>\n\nSpend it at the Ash-Shrine. Death here is a lesson, not an ending.';show('over');},900);}
+  $('oX').innerHTML='Your bodies cool on the steppe. By dawn, the ash has found them.\n\n<i>Three more walkers join the circle.</i>\n\nReached: <b>'+STAGES[Math.min(G.stage,STAGES.length-1)].n+'</b>\nKills: <b>'+G.kills+'</b>\nScore: <b>'+r.sc+'</b>  ·  Best: <b>'+S.best+'</b>\nAsh gathered: <span class="ash">+'+r.ashGain+'</span>\n\nSpend it at the Ash-Shrine. Death here is a lesson, not an ending.';show('over');},900);}
 function victory(){state='over';const r=finishRun(true);
  setTimeout(()=>cards([END,['Chapter I Complete','<b>Score: '+r.sc+'</b>  ·  Best: '+S.best+'\nKills: '+G.kills+'\nAsh: <span class="ash">+'+r.ashGain+'</span>\n\n<b>The Toll rises.</b> Ember Toll '+S.ng+' unlocked: the dead hit harder and drop more ash.\n\n<i>Five hundred years from now, in a smog city called Corrow, men will cast eight bells to drink the warmth from the ground. They will forget your name.\n\nThe ninth bell will not.</i>\n\nChapter II: <b>The Saint of Oss</b> — coming soon.']],()=>{refreshMenu();show('menu');state='menu';}),1400);}
+const CH2CARD=['Chapter II \u00b7 The Saint of Oss','Ysolde does not let the coal go out. It burns her hands, and she lets it.\n\nSouth, beyond the salt, the river-kingdom of Oss has a living saint. Tarqun\'s people kneel to her. The coal pulls toward her like a dog toward meat.\n\n<b>Tarqun:</b> "If she is what I think she is, I will have to kill my own queen."'];
+function addKorr(){const u=S.up,mx=Math.round(KORR.hp*(1+.15*u.vit)*(1+.2*S.ng));G.heroes.push({d:KORR,hp:mx,max:mx,atk:0,sk:0,dead:false});toast('Korr joins the circle');}
+function victory2(){state='over';const r=finishRun(true);
+ setTimeout(()=>cards([['The Saint Drinks','The Saint of Oss comes apart into salt. Every feeding tube runs dry at once, and ten thousand kneeling pilgrims fall forward together, like wheat.\n\nTarqun kneels by the altar. She was his queen. He closes her eyes and does not weep.\n\nKorr cuts a strip of her robe and ties it to his axe. Wenna watches him for a long time.\n\nThe coal in Ysolde\'s hands beats twice, like a heart. Then it speaks in an old woman\'s voice: <i>"Granddaughter. Carry me north, to where they will build the first bell."</i>'],['Chapter II Complete','<b>Score: '+r.sc+'</b>  \u00b7  Best: '+S.best+'\nKills: '+G.kills+'\nAsh: <span class="ash">+'+r.ashGain+'</span>\n\nChapter III: <b>The First Bell</b> is coming.']],()=>{refreshMenu();show('menu');state='menu';}),1400);}
+function startCh2(){newRun();G.stage=4;G.heroes.forEach(q=>{q.max=Math.round(q.max*1.25);q.hp=q.max});cards([CH2CARD],showMap);}
+
 function refreshMenu(){$('mStats').innerHTML='Best: '+S.best+' · Ash: <span class="ash">'+S.ash+'</span>'+(S.ng?' · Ember Toll '+S.ng:'');}
 function startRun(){newRun();cards(S.wins?[INTRO[2]]:INTRO,showMap);}
 $('mPlay').onclick=()=>{audio();SFX.ui();startRun();};
+$('mCh2').onclick=()=>{audio();SFX.ui();startCh2();};
 $('mShop').onclick=()=>{audio();SFX.ui();openShop('menu');};
 $('mLore').onclick=()=>{audio();SFX.ui();cards([['Folk Tales of the Steppe',LORE]],()=>{show('menu');state='menu';});};
 let shopBack='menu';
@@ -440,7 +471,7 @@ function drawEnemy(e,t){const x=e.x,y=e.y,r=e.r,w=Math.sin(e.ph*6)*2;
 
 function render(){
  cx.setTransform(DPR,0,0,DPR,0,0);
- const s=G?STAGES[Math.min(G.stage,3)]:STAGES[3],t=performance.now()/1000;
+ const s=G?STAGES[Math.min(G.stage,STAGES.length-1)]:STAGES[3],t=performance.now()/1000;
  const bg=cx.createLinearGradient(0,0,0,H);bg.addColorStop(0,s.col[0]);bg.addColorStop(1,s.col[1]);cx.fillStyle=bg;cx.fillRect(0,0,W,H);
  const inGame=G&&(state==='play'||state==='between'||state==='over'||state==='paused');
  if(inGame){
